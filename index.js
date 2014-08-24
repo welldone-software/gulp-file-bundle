@@ -11,9 +11,11 @@ var gutil = require('gulp-util'),
 var jsTpl = _.template('<%_.each(paths, function(p){ %> document.write(\'<script src="<%= p %>"></script>\');\n <% }); %>'),
     cssTpl = _.template('<%_.each(paths, function(p){ %> @import url(<%= p %>);\n <% }); %>');
 
-function fileInclusion(fileName, opts) {
+function fileInclusion(bundleName, opts) {
 
-    if (!fileName) throw new PluginError('gulp-include', 'Missing fileName option for gulp-concat');
+    if (!bundleName) {
+        throw new PluginError('gulp-bundle-file', 'Missing bundleName argument');
+    }
 
     opts = _.defaults(opts, {
         type : 'js',
@@ -26,8 +28,14 @@ function fileInclusion(fileName, opts) {
         base = opts.base;
 
     function onData(file) {
-        if (file.isNull()) return; // ignore
-        if (file.isStream()) return this.emit('error', PluginError('gulp-include',  'Streaming not supported'));
+        
+        if (file.isNull()) {
+            return; // ignore
+        }
+        
+        if (file.isStream()){
+            return this.emit('error', PluginError('gulp-bundle-file',  'Streaming not supported'));
+        }
 
         if(base){
             file.base = base;
@@ -51,7 +59,7 @@ function fileInclusion(fileName, opts) {
                 file = new File({
                     cwd: firstFile.cwd,
                     base: firstFile.base,
-                    path: path.join(firstFile.base, fileName),
+                    path: path.join(firstFile.base, bundleName),
                     contents: new Buffer(tpl({paths: paths})),
                     stat: firstFile.stat
                 });
