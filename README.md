@@ -15,7 +15,7 @@ gulp.task('bundle.js', function() {
         }))
         .pipe(gulp.dest(dstDir));
 });
-```js
+```
 
 results in a bundle.js like so:
 
