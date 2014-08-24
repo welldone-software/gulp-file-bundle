@@ -11,14 +11,19 @@ var gutil = require('gulp-util'),
 var jsTpl = _.template('<%_.each(paths, function(p){ %> document.write(\'<script src="<%= p %>"></script>\');\n <% }); %>'),
     cssTpl = _.template('<%_.each(paths, function(p){ %> @import url(<%= p %>);\n <% }); %>');
 
-function fileInclusion(fileName, opt) {
+function fileInclusion(fileName, opts) {
 
     if (!fileName) throw new PluginError('gulp-include', 'Missing fileName option for gulp-concat');
-    if (!opt) opt = {};
 
+    opts = _.defaults(opts, {
+        type : 'js',
+        base : undefined,
+        emitInputFiles: true
+    });
+    
     var files = [],
-        tpl = opt.type == 'css' ? cssTpl : jsTpl,
-        base = opt.base;
+        tpl = opts.type == 'css' ? cssTpl : jsTpl,
+        base = opts.base;
 
     function onData(file) {
         if (file.isNull()) return; // ignore
@@ -30,9 +35,9 @@ function fileInclusion(fileName, opt) {
 
         files.push(file);
 
-        //console.log(_.pick(file, ['base', 'path', 'relative', 'cwd']));
-
-        this.emit('data', file);
+        if(opts.emitInputFiles){
+            this.emit('data', file);
+        }
     }
 
     function onEnd() {

@@ -6,6 +6,7 @@
 
 The plugin is minimalistic and simple. It generates the bundle file on the fly and adds it to the stream of files passing through it.
 
+```js
 gulp.task('bundle.js', function() {
     return gulp.src(srcDir + '/**/*.js')
         .pipe(bundle('bundle.js', {
@@ -14,8 +15,9 @@ gulp.task('bundle.js', function() {
         }))
         .pipe(gulp.dest(dstDir));
 });
+```js
 
-Results in a bundle.js like so:
+results in a bundle.js like so:
 
 ```js
 document.write('<script src="file1.js"></script>');
@@ -36,7 +38,7 @@ gulp.task('bundle.css', function() {
 });
 ```
 
-Producing a bundle.css like so:
+producess a bundle.css like so:
 
 ```css
 @import url(file1.css);
