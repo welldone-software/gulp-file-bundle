@@ -6,26 +6,42 @@
 
 The plugin is minimalistic and simple. It generates the bundle file on the fly and adds it to the stream of files passing through it.
 
+For example, the following folder structure:
+
 ```
-- src
++ src
     - file1.js
-    - fldr
+    + fldr
         - file1.js
         - file2.js
 ```
 
+And gulp task: 
+
 ```js
 gulp.task('bundle.js', function() {
-    return gulp.src(srcDir + '/**/*.js')
+    return gulp.src('src/**/*.js')
         .pipe(bundle('bundle.js', {
             type: 'js', //can be ommited, it is the default
-            base: srcDir
+            base: 'src'
         }))
-        .pipe(gulp.dest(dstDir));
+        .pipe(gulp.dest('dst'));
 });
 ```
 
-results in a bundle.js like so:
+Results in a directory like so:
+
+```
++ dst
+    - bundle.js
+    - file1.js
+    + fldr
+        - file1.js
+        - file2.js
+```
+
+
+And a bundle.js content like so:
 
 ```js
 document.write('<script src="file1.js"></script>');
@@ -33,20 +49,20 @@ document.write('<script src="fldr/file1.js"></script>');
 document.write('<script src="fldr/file2.js"></script>');
 ```
 
-And a css bundling task looks like this:
+A css bundling task is similar and looks like this:
 
 ```js
 gulp.task('bundle.css', function() {
-    return gulp.src(srcDir + '/**/*.css')
+    return gulp.src('src/**/*.css')
         .pipe(bundle('bundle.css', {
             type: 'css',
-            base: srcDir
+            base: 'src'
         }))
-        .pipe(gulp.dest(dstDir));
+        .pipe(gulp.dest('dst'));
 });
 ```
 
-producess a bundle.css like so:
+The content of the bundle.css is the following:
 
 ```css
 @import url(file1.css);
@@ -55,7 +71,7 @@ producess a bundle.css like so:
 ```
 
 
-## Arguments
+## Parameters
 
 `bundle(bundleName, options)`
 
