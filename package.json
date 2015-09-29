@@ -1,24 +1,20 @@
 {
-  "name": "gulp-bundle-file",
+  "name": "gulp-file-bundle",
   "description": "A gulp plugin for bundling static files using in a simple inclue (bundle) file. Supports both css and js bundling.",
   "version": "1.0.0",
-  "homepage": "https://github.com/welldone-software/gulp-bundle-file",
-  "author": {
-    "name": "Welldone Software Solutions Ltd.",
-    "email": "dani@welldone-software.com",
-    "url": "http://welldone-software.com"
-  },
+  "homepage": "https://github.com/welldone-software/gulp-file-bundle",
+  "author": "Welldone Software Solutions Ltd. <dani@welldone-software.com> (http://welldone-software.com)",
   "repository": {
     "type": "git",
-    "url": "git@github.com:welldone-software/gulp-bundle-file.git"
+    "url": "git+ssh://git@github.com/welldone-software/gulp-file-bundle.git"
   },
   "bugs": {
-    "url": "https://github.com/welldone-software/gulp-bundle-file/issues"
+    "url": "https://github.com/welldone-software/gulp-file-bundle/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/welldone-software/gulp-bundle-file/blob/master/LICENSE"
+      "url": "https://github.com/welldone-software/gulp-file-bundle/blob/master/LICENSE"
     }
   ],
   "engines": {
@@ -55,5 +51,11 @@
     "bundle",
     "include",
     "static"
-  ]
+  ],
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "gulp"
+  }
 }

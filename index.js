@@ -11,10 +11,12 @@ var gutil = require('gulp-util'),
 var jsTpl = _.template('<%_.each(paths, function(p){ %> document.write(\'<script src="<%= p %>"></script>\');\n <% }); %>'),
     cssTpl = _.template('<%_.each(paths, function(p){ %> @import url(<%= p %>);\n <% }); %>');
 
+const PLUGIN_NAME = 'gulp-file-bundle';
+
 function fileInclusion(bundleName, opts) {
 
     if (!bundleName) {
-        throw new PluginError('gulp-bundle-file', 'Missing bundleName argument');
+        throw new PluginError(PLUGIN_NAME, 'Missing bundleName argument');
     }
 
     opts = _.defaults(opts, {
@@ -34,7 +36,7 @@ function fileInclusion(bundleName, opts) {
         }
         
         if (file.isStream()){
-            return this.emit('error', PluginError('gulp-bundle-file',  'Streaming not supported'));
+            return this.emit('error', PluginError(PLUGIN_NAME,  'Streaming not supported'));
         }
 
         if(base){

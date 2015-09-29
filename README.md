@@ -1,4 +1,4 @@
-# gulp-bundle-file
+# gulp-file-bundle
 
 > A [Gulp](http://gulpjs.com/) plugin for bundling js and css resources as an external reference.
 
@@ -109,5 +109,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
  - 1.0.0 - Basic features.
 
 ## License
-[MIT](https://github.com/welldone-software/gulp-bundle-file/blob/master/LICENSE)
+[MIT](https://github.com/welldone-software/gulp-file-bundle/blob/master/LICENSE)
 
