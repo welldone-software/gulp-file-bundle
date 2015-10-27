@@ -11,7 +11,7 @@ var gutil = require('gulp-util'),
 var jsTpl = _.template('<%_.each(paths, function(p){ %> document.write(\'<script src="<%= p %>"></script>\');\n <% }); %>'),
     cssTpl = _.template('<%_.each(paths, function(p){ %> @import url(<%= p %>);\n <% }); %>');
 
-const PLUGIN_NAME = 'gulp-file-bundle';
+var PLUGIN_NAME = 'gulp-file-bundle';
 
 function fileInclusion(bundleName, opts) {
 
