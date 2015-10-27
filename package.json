@@ -1,7 +1,7 @@
 {
   "name": "gulp-file-bundle",
   "description": "A gulp plugin for bundling static files using in a simple inclue (bundle) file. Supports both css and js bundling.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/welldone-software/gulp-file-bundle",
   "author": "Welldone Software Solutions Ltd. <dani@welldone-software.com> (http://welldone-software.com)",
   "repository": {
