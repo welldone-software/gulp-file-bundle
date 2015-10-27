@@ -107,7 +107,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
  - 1.0.0 - Basic features.
-
+ - 1.0.1 - Minor fix for strict mode.
+ - 
 ## License
 [MIT](https://github.com/welldone-software/gulp-file-bundle/blob/master/LICENSE)
 
